@@ -30,18 +30,20 @@ async function register (req, res) {
 }
 
 async function login (req, res) {
-     let user = User.findOne({email: req.body.email});
+     let user = await User.findOne({email: req.body.email}).exec();
      if (!user) {
           return res.send("user not found !");
      }
 
+     console.log('user:', user);
      const match = user.matchPassword(req.body.password);
-
+     console.log("match :", match);
      if (!match) {
           return res.send("wrong password");
      }
 
      const token = newToken(user);
+     return res.send({user, token});
 }
 
 module.exports = {register, login};

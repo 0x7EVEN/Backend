@@ -12,7 +12,6 @@ function authenticate (req, res, next) {
           const user = verifyToken(token);
           req.user = user.user;
           return next();
-
      } catch (err) {
           if (!user) {
                return res.send("bearer token error");
@@ -28,3 +27,6 @@ function verifyToken (token) {
           });
      });
 }
+
+
+module.exports = authenticate;

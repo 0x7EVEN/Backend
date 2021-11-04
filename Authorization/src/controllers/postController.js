@@ -2,17 +2,16 @@ const mongoose = require("mongoose");
 
 
 const express = require("express");
-const Product = require("../models/productModel");
+const Product = require("../models/postModel");
 
-
+const authenticate = require("../middleWare/authenticate");
 const router = express.Router();
 
 
-router.get("/", async function(req, res) {
+router.get("/", authenticate, async function(req, res) {
      try {
           const products = await Product.find().lean().exec();
-
-          return res.send(products);
+          return res.send("success");
      } catch (err) {
           console.log(err);
           return res.send(err.message);

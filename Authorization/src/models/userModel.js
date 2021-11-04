@@ -21,7 +21,7 @@ userSchema.pre("save", function(next) {
      return next();
 });
 
-userSchema.methods.checkPassword = function(password) {
+userSchema.methods.matchPassword = function(password) {
      return bcrypt.compareSync(password, this.password);
 };
 
