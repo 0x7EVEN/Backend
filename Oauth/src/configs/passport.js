@@ -1,4 +1,6 @@
 const GoogleStrategy = require("passport-google-oauth2").Strategy;
+require("dotenv").config();
+
 const Google_api_id = process.env.ID;
 
 const Google_api_key = process.env.KEY;
