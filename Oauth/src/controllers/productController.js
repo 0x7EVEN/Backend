@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 
 const express = require("express");
-const Product = require("../models/postModel");
+const Product = require("../models/productModel");
 
 const authenticate = require("../middleWare/authenticate");
 const router = express.Router();

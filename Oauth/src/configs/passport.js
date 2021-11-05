@@ -1,7 +1,7 @@
 const GoogleStrategy = require("passport-google-oauth2").Strategy;
-const Google_api_id = "924433487602-rfi5rv6lnnplpeg80qduodj0ab9fnn1n.apps.googleusercontent.com";
+const Google_api_id = process.env.ID;
 
-const Google_api_key = "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";
+const Google_api_key = process.env.KEY;
 
 const User = require("../models/userModel");
 const passport = require("passport");

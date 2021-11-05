@@ -8,9 +8,8 @@ app.use(express.json());
 const passport = require("./configs/passport");
 app.use(passport.initialize());
 
-
 const {register, login} = require("./controllers/user.controller");
-const postController = require("./controllers/postController");
+const postController = require("./controllers/productController");
 app.use("/register", register);
 app.use("/login", login);
 
@@ -38,7 +37,6 @@ app.get("/Auth/google/callback", passport.authenticate("google", {
      successRedirect: "/auth/google/success",
      failureRedirect: "auth/google/failure"
 }));
-
 
 app.listen(3333, async () => {
      try {
