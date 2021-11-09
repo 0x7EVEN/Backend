@@ -31,7 +31,7 @@ app.get('/users', async function(req, res) {
      }
 });
 
-router.post("/"
+app.post("/"
      , body("first_name").notEmpty().withMessage("first_name is required")
      , body("last_name").notEmpty().withMessage("last_name is required")
      , body("email").notEmpty().withMessage("email is required").isEmail().withMessage("email is incorrect")
