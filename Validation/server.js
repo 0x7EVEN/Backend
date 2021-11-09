@@ -22,7 +22,7 @@ const userSchema = mongoose.Schema({
 
 const User = mongoose.model("user", userSchema);
 
-app.get('/users', async function(req, res) {
+app.get('/', async function(req, res) {
      try {
           const users = await User.find().lean().exec();
           return res.send(users);
@@ -39,17 +39,19 @@ app.post("/"
      , body("age").notEmpty().withMessage("age is required").custom((age) => {
           if (age >= 1 && age <= 100) {
                return true;
+          } else {
+               throw new Error("please provide valid age");
           }
-          throw new Error("please provide valid age");
      }), body("gender").notEmpty().withMessage("gender is required").custom((gender) => {
           if (gender.toLowerCase() === "male" || gender.toLowerCase() === "female" || gender.toLowerCase() === "others") {
                return true;
+          } else {
+               throw new Error("gender is invalid");
           }
-          throw new Error("gender is invalid");
      }), async (req, res) => {
           const errors = validationResult(req);
           if (!errors.isEmpty()) {
-               return res.send(errors.array());
+               return res.send(errors);
           }
           res.send("Thank you");
      });
